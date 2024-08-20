@@ -1,30 +1,57 @@
-# neptune
+# Neptune
 
-TODO(b/358560339): Add a description for your new project, explain what is
-being released here, etc... Additional, the following sections are normally
-expected for all releases. Feel free to add additional sections if appropriate
-for your project.
+Neptune is a dataset consisting of challenging question-answer-decoy (QAD) sets
+for long videos (up to 15 minutes). The goal of this dataset is to test
+video-language models for a broad range of long video reasoning abilities, which
+are provided as "question type" labels for each question, for example "video
+summarization", "temporal ordering", "state changes" and "creator intent"
+amongst others.
 
-## Installation
+Neptune allows for two modes of evaluation: multiple-choice and
+open-ended question answering. For the latter, we provide our own open-ended
+metric based on Gemma, called Gemma Equivalence Metric (GEM).
 
-Write instructions for how the user should install your code. The instructions
-should ideally be valid when copy-pasted. You can combine this with the Usage
-section if there's no separate installation step.
+Neptune was created using a semi-automatic pipeline, which involves careful
+prompting of large LLMs and VLMs, including Gemini. See more details in the paper link provided below.
 
-## Usage
+Neptune has more than 3,800 questions for over 2,700 videos.
 
-Write example usage of your code. The instructions should ideally be valid when
-copy-pasted, and will be used by your technical reviewer to verify that your
-package functions correctly.
+## Downloading the Data
+
+We provide links to json files that contain the YouTube IDs and annotations for each split below.
+
+The json files contains the following fields:
+
+- key: Unique identifier for each question
+- video_id: YouTube URL
+- question: Free-form question
+- answer: Free-form answer
+- answer_choice_{i}: Decoys for MCQ evaluation, i in range(0,4)
+- answer_id: ID of the correct answer in the decoys
+- question type: Question type
+
+[Neptune-Full Split]()
+
+[Neptune-Full MMH]()
+
+[Neptune-Full MMA]()
+
+## Evaluation and Metrics
+
+Multiple choice evaluation involves selecting the answer from 5 options (including 4 decoys) and using accuracy as the metric.
+
+For open-ended evaluation, we create a new language model based metric, called
+the Gemma Equivalence Metric (GEM). We do this by fine tuning a Gemma-7B-IT
+checkpoint on the
+[BEM answer equivalence dataset](https://github.com/google-research-datasets/answer-equivalence-dataset)
+and prompt it to determine if a produced answer is equivalent to the ground truth.
 
 ## Citing this work
 
-Add citation details here, usually a pastable BibTeX snippet:
-
 ```latex
-@article{publicationname,
-      title={Publication Name},
-      author={Author One and Author Two and Author Three},
+@article{neptune24,
+      title={Neptune: The Long Orbit to Benchmarking Long Video Understanding},
+      author={Arsha Nagrani and Mingda Zhang and Ramin Mehran and Rachel Hornung and Nitesh Bharadwaj Gundavarapu and Nilpa Jha and Austin Myers and Xingyi Zhou and Boqing Gong and Cordelia Schmid and Mikhail Sirotenko and Yukun Zhu and Tobias Weyand},
       year={2024},
 }
 ```
