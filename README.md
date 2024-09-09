@@ -14,7 +14,7 @@ metric based on Gemma, called Gemma Equivalence Metric (GEM).
 Neptune was created using a semi-automatic pipeline, which involves careful
 prompting of large LLMs and VLMs, including Gemini. See more details in the paper link provided below.
 
-Neptune has more than 3,800 questions for over 2,700 videos.
+Neptune has more than 3,200 questions for over 2,400 videos.
 
 ## Downloading the Data
 
@@ -41,10 +41,11 @@ The json files contains the following fields:
 Multiple choice evaluation involves selecting the answer from 5 options (including 4 decoys) and using accuracy as the metric.
 
 For open-ended evaluation, we create a new language model based metric, called
-the Gemma Equivalence Metric (GEM). We do this by fine tuning a Gemma-7B-IT
+the Gemma Equivalence Metric (GEM). We do this by fine tuning a Gemma
 checkpoint on the
 [BEM answer equivalence dataset](https://github.com/google-research-datasets/answer-equivalence-dataset)
 and prompt it to determine if a produced answer is equivalent to the ground truth.
+We will be releasing the model for the metric soon.
 
 ## Citing this work
 
