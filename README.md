@@ -19,6 +19,7 @@ Neptune has more than 3,200 questions for over 2,400 videos.
 ## Downloading the Data
 
 We provide links to json files that contain the YouTube IDs and annotations for each split below.
+Please see the paper for details regarding each split.
 
 The json files contains the following fields:
 
@@ -30,11 +31,11 @@ The json files contains the following fields:
 - answer_id: ID of the correct answer in the decoys
 - question type: Question type
 
-[Neptune-Full Split]()
+[Neptune-Full](https://storage.mtls.cloud.google.com/neptunedata/neptune_full.json)
 
-[Neptune-Full MMH]()
+[Neptune-MMH](https://storage.mtls.cloud.google.com/neptunedata/neptune_mmh.json)
 
-[Neptune-Full MMA]()
+[Neptune-MMA](https://storage.mtls.cloud.google.com/neptunedata/neptune_mma.json)
 
 ## Evaluation and Metrics
 
