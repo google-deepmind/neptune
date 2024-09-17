@@ -7,14 +7,33 @@ are provided as "question type" labels for each question, for example "video
 summarization", "temporal ordering", "state changes" and "creator intent"
 amongst others.
 
+<div style="text-align:center">
+    <figure>
+        <img src ="examples.png" width="1000">
+        <figcaption>
+        Neptune consists of challenging question-answer-decoy sets for videos
+        to assess a number of long video reasoning abilities.
+        </figcaption>
+    </figure>
+</div>
+
 Neptune allows for two modes of evaluation: multiple-choice and
 open-ended question answering. For the latter, we provide our own open-ended
 metric based on Gemma, called Gemma Equivalence Metric (GEM).
 
 Neptune was created using a semi-automatic pipeline, which involves careful
-prompting of large LLMs and VLMs, including Gemini. See more details in the paper link provided below.
+prompting of large LLMs and VLMs, including Gemini. See more details provided in the [paper](https://storage.googleapis.com/neptune-paper/neptune-paper.pdf).
 
 Neptune has more than 3,200 questions for over 2,400 videos.
+
+<div style="text-align:center">
+    <figure>
+        <img src ="stats.png" width="1000">
+        <figcaption>
+        Greater than 12% of the videos are longer than 5 minutes and over 25% are longer than 3 minutes. Neptune covers a number of question types and video domains.
+        </figcaption>
+    </figure>
+</div>
 
 ## Downloading the Data
 
