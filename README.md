@@ -1,6 +1,7 @@
 # Neptune
 
-Neptune is a dataset consisting of challenging question-answer-decoy (QAD) sets
+[Neptune](https://www.arxiv.org/abs/2412.09582) is a dataset consisting of
+challenging question-answer-decoy (QAD) sets
 for long videos (up to 15 minutes). The goal of this dataset is to test
 video-language models for a broad range of long video reasoning abilities, which
 are provided as "question type" labels for each question, for example "video
@@ -22,7 +23,7 @@ open-ended question answering. For the latter, we provide our own open-ended
 metric based on Gemma, called Gemma Equivalence Metric (GEM).
 
 Neptune was created using a semi-automatic pipeline, which involves careful
-prompting of large LLMs and VLMs, including Gemini. See more details provided in the [paper](https://storage.googleapis.com/neptune-paper/neptune-paper.pdf).
+prompting of large LLMs and VLMs, including Gemini. See more details provided in the [paper](https://www.arxiv.org/abs/2412.09582).
 
 Neptune has more than 3,200 questions for over 2,400 videos.
 
