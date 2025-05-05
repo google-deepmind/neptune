@@ -2,15 +2,15 @@
 
 [Neptune](https://www.arxiv.org/abs/2412.09582) is a dataset consisting of
 challenging question-answer-decoy (QAD) sets
-for long videos (up to 15 minutes). The goal of this dataset is to test
-video-language models for a broad range of long video reasoning abilities, which
-are provided as "question type" labels for each question, for example "video
-summarization", "temporal ordering", "state changes" and "creator intent"
+for variable length videos (up to 15 minutes). The goal of this dataset is to
+test video-language models for a broad range of long video reasoning abilities,
+which are provided as "question type" labels for each question, for example
+"video summarization", "temporal ordering", "state changes" and "creator intent"
 amongst others.
 
 <div style="text-align:center">
     <figure>
-        <img src ="examples.png" width="1000">
+        <img src ="examples.png" width="1000" alt="Examples of Neptune questions and videos.">
         <figcaption>
         Neptune consists of challenging question-answer-decoy sets for videos
         to assess a number of long video reasoning abilities.
@@ -23,22 +23,26 @@ open-ended question answering. For the latter, we provide our own open-ended
 metric based on Gemma, called Gemma Equivalence Metric (GEM).
 
 Neptune was created using a semi-automatic pipeline, which involves careful
-prompting of large LLMs and VLMs, including Gemini. See more details provided in the [paper](https://www.arxiv.org/abs/2412.09582).
+prompting of large LLMs and VLMs, including Gemini. See more details provided
+in the [paper](https://www.arxiv.org/abs/2412.09582).
 
 Neptune has more than 3,200 questions for over 2,400 videos.
 
 <div style="text-align:center">
     <figure>
-        <img src ="stats.png" width="1000">
+        <img src ="stats.png" width="1000" alt="Statistics of Neptune dataset, including video length and question types.">
         <figcaption>
-        Greater than 12% of the videos are longer than 5 minutes and over 25% are longer than 3 minutes. Neptune covers a number of question types and video domains.
+        Greater than 12% of the videos are longer than 5 minutes and over 25%
+        are longer than 3 minutes. Neptune covers a number of question types
+        and video domains.
         </figcaption>
     </figure>
 </div>
 
 ## Downloading the Data
 
-We provide links to json files that contain the YouTube IDs and annotations for each split below.
+We provide links to json files that contain the YouTube IDs and annotations for
+each split below.
 Please see the paper for details regarding each split.
 
 The json files contains the following fields:
@@ -59,17 +63,19 @@ The json files contains the following fields:
 
 ## Evaluation and Metrics
 
-Multiple choice evaluation involves selecting the answer from 5 options (including 4 decoys) and using accuracy as the metric.
+Multiple choice evaluation involves selecting the answer from 5 options
+(including 4 decoys) and using accuracy as the metric.
 
 For open-ended evaluation, we create a new language model based metric, called
 the Gemma Equivalence Metric (GEM). We do this by fine tuning a Gemma
 checkpoint on the
 [BEM answer equivalence dataset](https://github.com/google-research-datasets/answer-equivalence-dataset)
-and prompt it to determine if a produced answer is equivalent to the ground truth.
+and prompt it to determine if a produced answer is equivalent to the ground
+truth.
 We will be releasing the model for the metric soon.
 
 ## Citing this work
-
+<!-- disableFinding(SNIPPET_INVALID_LANGUAGE) -->
 ```latex
 @article{neptune24,
       title={Neptune: The Long Orbit to Benchmarking Long Video Understanding},
@@ -79,7 +85,6 @@ We will be releasing the model for the metric soon.
 ```
 
 ## License and disclaimer
-
 Copyright 2024 DeepMind Technologies Limited
 
 All software is licensed under the Apache License, Version 2.0 (Apache 2.0);
