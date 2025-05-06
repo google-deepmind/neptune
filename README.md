@@ -1,12 +1,90 @@
-# Neptune
+# Neptune Dataset Collection
 
-[Neptune](https://www.arxiv.org/abs/2412.09582) is a dataset consisting of
+## Tl;dr
+This page covers the Neptune Dataset Collection which is a set of video QA
+datasets.
+This collection currently includes the original [Neptune](#neptune) dataset and
+the [MINERVA](#minerva) dataset.
+
+## MINERVA
+MINERVA consists of ~1.5K
+challenging question-answer-decoy (QAD) sets for variable length videos. For
+each question, we provide 5 answer choices, as well as detailed,
+manually-annotated reasoning traces. Every question in MINERVA requires complex
+reasoning using two or more skills
+(for example numerical reasoning, temporal reasoning, spatial navigation).
+Videos also span multiple domains (short films, sports, instructional videos
+etc), with various video lengths (from 2 minutes to over 1.5 hours). The
+hand-crafted, detailed reasoning trace accompanying each question outlines
+the steps that are required to come to the correct answer.
+These traces include timestamps where necessary to refer to relevant sections of
+the video, and also describes key actions, objects, as well as outlines logical
+reasoning steps. More details are provided in our
+[arXiv](https://arxiv.org/abs/2505.00681) paper.
+
+<div style="text-align:center">
+    <figure>
+        <img src ="minerva_examples.png" width="900", alt="Examples of Minerva questions and videos.">
+        <figcaption>
+        <b>Examples from MINERVA. MINERVA consists of challenging
+        question-answer-decoy sets for videos. The answer to each question is
+        also accompanied by a detailed reasoning trace, which outlines the steps
+         required to come to the answer. Reasoning traces are detailed,
+         including timestamps (highlighted in green) and key actions
+         (highlighted in pink).</b>
+        </figcaption>
+        <br>
+    </figure>
+</div>
+
+<div style="text-align:center">
+    <figure>
+        <img src ="combined_lengths.png" width="700", alt="Statistics of Minerva dataset, including video length and and reasoning trace lengths.">
+        <figcaption>
+        <b>MINERVA covers a variety of video lengths. Reasoning traces are long and detailed.</b>
+        </figcaption>
+    </figure>
+</div>
+
+### Downloading the Data
+We provide a json file that contains the YouTube IDs and annotations.
+
+The json file contains the following fields:
+
+- key: Unique identifier for each question
+- video_id: YouTube URL
+- question: Free-form question
+- answer: Free-form answer
+- answer_choice_{i}: Decoys for MCQ evaluation, i in range(0,4)
+- answer_id: ID of the correct answer in the decoys
+- reasoning: Detailed reasoning trace
+- question type: A comma-separated list of multiple skills needed to answer the
+question
+- split: Coarse video domain
+- category: Fine-grained video domain
+
+[MINERVA json](https://storage.mtls.cloud.google.com/neptunedata/minerva.json)
+
+### Citing this work
+<!-- disableFinding(SNIPPET_INVALID_LANGUAGE) -->
+```latex
+@article{minerva25,
+  title={MINERVA: Evaluating Complex Video Reasoning},
+  author={Nagrani, Arsha and Menon, Sachit and Iscen, Ahmet and Buch, Shyamal and Mehran, Ramin and Jha, Nilpa and Hauth, Anja and Zhu, Yukun and Vondrick, Carl and Sirotenko, Mikhail and Schmid, Cordelia and Weyand, Tobias},
+  journal={arXiv preprint arXiv:2505.00681},
+  year={2025}
+}
+```
+
+## Neptune
+Neptune is a dataset consisting of
 challenging question-answer-decoy (QAD) sets
 for variable length videos (up to 15 minutes). The goal of this dataset is to
 test video-language models for a broad range of long video reasoning abilities,
 which are provided as "question type" labels for each question, for example
 "video summarization", "temporal ordering", "state changes" and "creator intent"
-amongst others.
+amongst others. More details are provided in our
+[arXiv](https://www.arxiv.org/abs/2412.09582) paper.
 
 <div style="text-align:center">
     <figure>
@@ -39,7 +117,7 @@ Neptune has more than 3,200 questions for over 2,400 videos.
     </figure>
 </div>
 
-## Downloading the Data
+### Downloading the Data
 
 We provide links to json files that contain the YouTube IDs and annotations for
 each split below.
@@ -61,7 +139,7 @@ The json files contains the following fields:
 
 [Neptune-MMA](https://storage.mtls.cloud.google.com/neptunedata/neptune_mma.json)
 
-## Evaluation and Metrics
+### Evaluation and Metrics
 
 Multiple choice evaluation involves selecting the answer from 5 options
 (including 4 decoys) and using accuracy as the metric.
@@ -72,14 +150,14 @@ checkpoint on the
 [BEM answer equivalence dataset](https://github.com/google-research-datasets/answer-equivalence-dataset)
 and prompt it to determine if a produced answer is equivalent to the ground
 truth.
-We will be releasing the model for the metric soon.
 
-## Citing this work
+### Citing this work
 <!-- disableFinding(SNIPPET_INVALID_LANGUAGE) -->
 ```latex
 @article{neptune24,
       title={Neptune: The Long Orbit to Benchmarking Long Video Understanding},
-      author={Arsha Nagrani and Mingda Zhang and Ramin Mehran and Rachel Hornung and Nitesh Bharadwaj Gundavarapu and Nilpa Jha and Austin Myers and Xingyi Zhou and Boqing Gong and Cordelia Schmid and Mikhail Sirotenko and Yukun Zhu and Tobias Weyand},
+      author={Nagrani, Arsha and Zhang, Mingda and Mehran, Ramin and Hornung, Rachel and Gundavarapu, Nitesh Bharadwaj and Jha, Nilpa and Myers, Austin and Zhou, Xingyi and Gong, Boqing and Schmid, Cordelia and Sirotenko, Mikhail and Zhu, Yukun and Weyand, Tobias},
+      journal={arXiv preprint arXiv:2412.09582},
       year={2024},
 }
 ```
