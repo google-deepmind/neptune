@@ -21,8 +21,8 @@ have been hand-crafted by expert human raters.
         <figcaption>
         <b>Examples from Minerva-Ego. Each multiple choice question comes with
         a natural language reasoning trace, outlining the steps required to come
-        to the answer, which are grounded in time (highlighted in green) and
-        space (highlighted in pink).</b>
+        to the answer, which are grounded in time (localization with timestamps)
+        and space (associations with segmentation masks of objects).</b>
         </figcaption>
         <br>
     </figure>
