@@ -3,8 +3,57 @@
 ## Tl;dr
 This page covers the Neptune Dataset Collection which is a set of video QA
 datasets.
-This collection currently includes the original [Neptune](#neptune) dataset and
-the [MINERVA](#minerva) dataset.
+This collection currently includes [Minerva-Ego](#minerva-ego),
+the [MINERVA](#minerva) dataset and the original [Neptune](#neptune) dataset.
+
+## Minerva-Ego
+Minerva-Ego extends the MINERVA benchmark to egocentric video. It consists of
+1,160 complex multiple choice questions over videos selected from the
+[HD-EPIC](https://epic-kitchens.github.io/epic-fields/) dataset. As with
+MINERVA, each question is accompanied by a dense, spatiotemporally grounded
+reasoning trace that connects the steps required to solve the problem to
+specific timestamps and objects within the video. All annotations in Minerva-Ego
+have been hand-crafted by expert human raters.
+
+<div style="text-align:center">
+    <figure>
+        <img src ="minerva_ego_examples.png" width="900", alt="Examples of Minerva-Ego questions and videos.">
+        <figcaption>
+        <b>Examples from Minerva-Ego. Each multiple choice question comes with
+        a natural language reasoning trace, outlining the steps required to come
+        to the answer, which are grounded in time (highlighted in green) and
+        space (highlighted in pink).</b>
+        </figcaption>
+        <br>
+    </figure>
+</div>
+
+### Downloading the Data
+We provide a json file that contains the video IDs and annotations.
+
+The json file contains the following fields:
+
+- key: Unique identifier for each question
+- video_id: Video identifier from HD-EPIC
+- question: Free-form question
+- answer: Free-form answer
+- answer_choice_{i}: Decoys for MCQ evaluation, i in range(0,4)
+- answer_id: ID of the correct answer in the decoys
+- reasoning: Detailed reasoning trace
+- question type: A comma-separated list of multiple skills needed to answer the
+question
+
+[Minerva-Ego json](minerva-ego_20260205.json)
+
+### Citing this work
+<!-- disableFinding(SNIPPET_INVALID_LANGUAGE) -->
+```latex
+@article{minerva_ego26,
+  title={Minerva-Ego: Spatiotemporal Hints for Egocentric Video Understanding},
+  author={Nagrani, Arsha and Uijlings, Jasper and Buch, Shyamal and Weyand, Tobias and Vijayanarasimhan, Sudheendra and Hu, Bo and Mehran, Ramin and Ross, David A and Schmid, Cordelia},
+  year={2026}
+}
+```
 
 ## MINERVA
 MINERVA consists of ~1.5K
