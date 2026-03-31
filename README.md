@@ -1,10 +1,121 @@
-# Neptune Dataset Collection
+# MINERVA Dataset Collection
 
 ## Tl;dr
-This page covers the Neptune Dataset Collection which is a set of video QA
+This page covers the Minerva Dataset Collection which is a set of video QA
 datasets.
-This collection currently includes [Minerva-Ego](#minerva-ego),
-the [MINERVA](#minerva) dataset and the original [Neptune](#neptune) dataset.
+This collection currently includes the [Minerva-cultural](#minerva-cultural) dataset,
+[Minerva-Ego](#minerva-ego), the [MINERVA](#minerva) dataset and the original [Neptune](#neptune) dataset.
+
+## Minerva-cultural
+
+Minerva-cultural is a challenging benchmark for multicultural and
+multilingual long video reasoning. It consists of ~2,200 high-quality,
+entirely human-generated question-answer pairs from 540
+culturally-rich videos across 18 global locales. Unlike prior work
+that relies on automatic translations, Minerva-cultural provides
+complex questions, answers, and multi-step reasoning steps, all
+crafted in native languages by locally-situated experts.
+
+Minerva-cultural is designed to test whether Video-LLMs can achieve
+a deeply situated understanding of visual cultural context. Videos
+span six key cultural domains: **Sports**, **Cuisine**,
+**Festivals**, **Tourism**, **Rituals**, and **Education**, with
+durations ranging from 1 minute to over 1 hour. Each question
+requires at least two reasoning skills (e.g., Temporal Ordering,
+Spatial Perception, Cause and Effect, Counting, Object Recognition)
+along with a mandatory Visual Cultural Understanding skill.
+
+A key feature of Minerva-cultural is the inclusion of detailed,
+human-authored multi-step reasoning traces in the native language,
+providing ground-truth for reasoning evaluation. We leverage these
+traces to construct evidence-based graphs and propose a novel
+iterative strategy for fine-grained error analysis. Our evaluations
+reveal that SoTA Video-LLMs struggle significantly—the best model
+(Gemini-2.5-Pro) achieves 45.07% accuracy compared to a human
+baseline of 95.22%.
+
+More details are provided in our
+[arXiv](https://arxiv.org/abs/2601.10649) paper.
+
+<div style="text-align:center">
+    <figure>
+        <img src ="curve_teaser.png" width="900", alt="Examples of Minerva-cultural questions and videos from multiple locales.">
+        <figcaption>
+        <b>Examples from Minerva-cultural. Each question is crafted in
+        the native language by locally-situated experts, accompanied by
+        multi-step reasoning traces. Minerva-cultural spans 18 locales
+        and 6 cultural domains.</b>
+        </figcaption>
+        <br>
+    </figure>
+</div>
+
+### Locales
+
+Minerva-cultural covers 18 diverse locales and languages:
+
+| Locale | Language |
+|---|---|
+| ar-EG | Arabic (Egypt) |
+| bn-BD | Bengali (Bangladesh) |
+| de-DE | German (Germany) |
+| en-GB | English (United Kingdom) |
+| es-MX | Spanish (Mexico) |
+| fr-FR | French (France) |
+| hi-IN | Hindi (India) |
+| id-ID | Indonesian (Indonesia) |
+| it-IT | Italian (Italy) |
+| ja-JP | Japanese (Japan) |
+| kn-IN | Kannada (India) |
+| ko-KR | Korean (South Korea) |
+| mr-IN | Marathi (India) |
+| pt-BR | Portuguese (Brazil) |
+| ru-RU | Russian (Russia) |
+| ta-IN | Tamil (India) |
+| te-IN | Telugu (India) |
+| zh-TW | Chinese (Taiwan) |
+
+### Downloading the Data
+
+We provide a JSON file that contains the YouTube IDs and annotations.
+
+The JSON file contains the following fields:
+
+- **key**: Unique identifier for each question
+- **video_id**: YouTube URL
+- **locale**: Locale code (e.g., `ja-JP`, `hi-IN`)
+- **question**: Question in the native language
+- **answer**: Answer in the native language
+- **reasoning_steps**: Detailed multi-step reasoning trace in the
+  native language
+- **external_links**: External reference links used during annotation
+- **skills**: Comma-separated list of reasoning skills required to
+  answer the question
+- **category**: Cultural domain (e.g., Sports, Cuisine, Festivals)
+- **subcategory**: Fine-grained, locale-specific cultural sub-category
+
+[Minerva-cultural JSON](https://storage.mtls.cloud.google.com/neptunedata/curve.json)
+
+### Evaluation and Metrics
+
+Minerva-cultural uses open-ended question answering. Given the
+open-ended nature of the questions, standard string matching is
+inadequate. We employ an LLM Judge (Gemini-2.5-Flash) to score each
+response on a three-point scale (0, 1, 2) based on its semantic
+alignment with the ground truth. The same metric is used for both
+model and human evaluations. The full evaluation prompt is provided
+in the [paper](https://arxiv.org/abs/2601.10649).
+
+### Citing this work
+<!-- disableFinding(SNIPPET_INVALID_LANGUAGE) -->
+```latex
+@article{curve25,
+  title={CURVE: A Benchmark for Cultural and Multilingual Long Video Reasoning},
+  author={Singh, Darshan and Nagrani, Arsha and Manikantan, Kawshik and Singh, Harman and Tewari, Dinesh and Weyand, Tobias and Schmid, Cordelia and Angelova, Anelia and Dave, Shachi},
+  journal={arXiv preprint arXiv:2601.10649},
+  year={2025}
+}
+```
 
 ## Minerva-Ego
 Minerva-Ego extends the MINERVA benchmark to egocentric video. It consists of
